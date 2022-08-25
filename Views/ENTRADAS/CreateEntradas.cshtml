@@ -1,0 +1,66 @@
+﻿@model ProyectoCine.Models.ENTRADAS
+
+@{
+    ViewData["Title"] = "CreateEntradas";
+}
+
+<h1>CreateEntradas</h1>
+
+<h4>ENTRADAS</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateEntradas">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NroEntrada" class="control-label"></label>
+                <input asp-for="NroEntrada" class="form-control" />
+                <span asp-validation-for="NroEntrada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaEntrada" class="control-label"></label>
+                <input asp-for="FechaEntrada" class="form-control" />
+                <span asp-validation-for="FechaEntrada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombrePelicula" class="control-label"></label>
+                <input asp-for="NombrePelicula" class="form-control" />
+                <span asp-validation-for="NombrePelicula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Grabar Entrada" 
+                       class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="IndexEntradas">Regresar al Listado</a>
+</div>
+
+<!-- si la variable viewbag es distinto de nulo-->
+@if(ViewBag.MENSAJE != null)
+{// ESTE ES CODIGO DE C#
+    <div class="alert alert-info">
+        <p>
+            <!-- recuperando el valor de la variable -->
+            @ViewBag.MENSAJE
+        </p>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
